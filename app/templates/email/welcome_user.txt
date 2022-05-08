@@ -1,0 +1,8 @@
+Hello {{user.username}}.
+We are glad that you have signed up.
+It is our pleasure to welcome you to the Pitch family.
+With Pitch, you can create coding pitches or even, puns and life pitches.
+Thank you.
+
+Regards;
+Pitch family.

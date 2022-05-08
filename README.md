@@ -31,7 +31,7 @@ Pitches is an app for pitching different ideas and let others comment and review
 
 Please run the following command on your terminal on linux to clone our project:
 
-git clone [pitch](https://github.com/Cheruiyot-Moryn/pitches.git)
+git clone [pitches](https://github.com/Cheruiyot-Moryn/pitches.git)
 After the operation you will now be able to run the application locally on your computer.
 
 ------------------------------------------------------------------------
@@ -50,7 +50,7 @@ After the operation you will now be able to run the application locally on your 
 
 ## Contributing
 
-+ Git clone [pitch](https://github.com/Cheruiyot-Moryn/pitches.git)
++ Git clone [pitches](https://github.com/Cheruiyot-Moryn/pitches.git)
 + Make the necessary changes
 + Run the tests.
 + If everything is OK. Push your changes and make a pull request.
@@ -59,7 +59,7 @@ After the operation you will now be able to run the application locally on your 
 
 ### Link to view the app (heroku)
 
-[pitch](https://pitchkatana.herokuapp.com/)
+[pitches](https://pitchkatana.herokuapp.com/)
 
 ------------------------------------------------------------------------
 

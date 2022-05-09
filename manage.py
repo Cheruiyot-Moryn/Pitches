@@ -1,16 +1,12 @@
-from app import create_app,db
+from app import db
 from flask_script import Manager,Server
 from  flask_migrate import Migrate, MigrateCommand
 from app.models import User, Pitches, Comments
 
-
-app = create_app('development')
-
-
+app =('development')
 
 manager = Manager(app)
 manager.add_command('server',Server)
-
 
 @manager.command
 def test():

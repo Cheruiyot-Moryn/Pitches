@@ -1,9 +1,11 @@
-from app import db
+from app import create_app,db
 from flask_script import Manager,Server
 from  flask_migrate import Migrate, MigrateCommand
+import app
 from app.models import User, Pitches, Comments
 
-app =('development')
+"app = create_app('development')"
+FLASK_APP='app:create_app(args)'
 
 manager = Manager(app)
 manager.add_command('server',Server)

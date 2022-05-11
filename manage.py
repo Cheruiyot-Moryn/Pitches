@@ -4,11 +4,13 @@ from  flask_migrate import Migrate, MigrateCommand
 import app
 from app.models import User, Pitches, Comments
 
-"app = create_app('development')"
-FLASK_APP='app:create_app(args)'
+app = create_app('development')
+#FLASK_APP='app:create_app(args)'
 
 manager = Manager(app)
 manager.add_command('server',Server)
+migrate= Migrate(app ,db)
+manager.add_command('db',MigrateCommand)
 
 @manager.command
 def test():

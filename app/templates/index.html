@@ -1,5 +1,7 @@
-{% extends 'base.html'%}
+{% extends 'bootstrap/base.html'%}
 {% block styles%} {{ super() }}
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400&display=swap" rel="stylesheet">"
 <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}"> {% endblock %}
 {% block content %}
 

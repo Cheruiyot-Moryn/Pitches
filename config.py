@@ -1,7 +1,7 @@
 import os
 class Config:
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringaschool:1234@localhost/pitches'
-    SECRET_KEY = os.environ.get('SECRET_KEY')
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moureen:12345@localhost/pitches'
+    SECRET_KEY ='qwerty'
     MAIL_SERVER ='smtp.googlemail.com'
     MAIL_PORT =587
     MAIL_USE_TLS =True
@@ -14,10 +14,11 @@ class Config:
 
 class ProdConfig(Config):
     SQLALCHEMY_DATABASE_URI=os.environ.get('DATABASE_URL')
+    SECRET_KEY = 'qwerty'
     pass
 
 class TestConfig(Config):
-    SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://moringaschool:1234@localhost/pitches_test'
+    SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://moureen:12345@localhost/pitches_test'
 
 
 class DevConfig(Config):

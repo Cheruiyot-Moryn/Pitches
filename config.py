@@ -13,7 +13,7 @@ class Config:
         pass
 
 class ProdConfig(Config):
-    SQLALCHEMY_DATABASE_URI=os.environ.get('DATABASE_URL')
+    SQLALCHEMY_DATABASE_URI='postgresql://pqdatncnedjjkp:c53b3fd55395fe7bff7b40f6ca749e1c44bd570d8132ce2b9b9b76a131c738ff@ec2-52-200-215-149.compute-1.amazonaws.com:5432/darsjivh3me8bu'
     SECRET_KEY = 'qwerty'
     pass
 

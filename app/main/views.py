@@ -14,8 +14,7 @@ def home():
 
     return render_template('pitch.html', pitches=pitches, posted_by=posted_by, user=user)
 
-
-@main.route('/new_pitch', methods=['GET','POST'])
+@main.route('/new_pitch', methods=['POST','GET'])
 @login_required
 def new_pitch():
     form = PitchForm()
@@ -28,7 +27,7 @@ def new_pitch():
         new_pitch_object.save_p()
         return redirect(url_for('main.index'))
         
-    return render_template('create_pitch.html', form = form)   
+    return render_template('pitch.html', form = form)   
 
 @main.route('/categories/<pitch_category>')
 def categories(pitch_category):
@@ -39,7 +38,7 @@ def categories(pitch_category):
     return render_template('categories.html', pitch=pitch, posted_by=posted_by)
 
 
-@main.route('/comments/<int:pitch_id>', methods=['GET','POST'])
+@main.route('/comments/<int:pitch_id>', methods=['POST','GET'])
 @login_required
 def pitch_comments(pitch_id):
     comments = Comments.get_comments(pitch_id)
@@ -58,7 +57,7 @@ def pitch_comments(pitch_id):
     return render_template('comments.html', comment_form=form, comments=comments, pitch = pitch, user=user)
 
 
-@main.route('/user/<name>', methods=['GET','POST'])
+@main.route('/user/<name>', methods=['POST','GET'])
 @login_required
 def profile(name):
     user = User.query.filter_by(username=name).first()

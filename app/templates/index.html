@@ -2,7 +2,7 @@
 {% block styles%} {{ super() }}
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400&display=swap" rel="stylesheet">"
-<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}"> {% endblock %}
+<link href="{{url_for('static',filename='css/index.css')}}" rel="stylesheet"/> {% endblock %}
 {% block content %}
 
 <body>
@@ -11,7 +11,7 @@
             <div class="card-header">Coding</div>
             <div class="card-body text-info">
               <h5 class="card-title">Pitches on coding</h5>
-              <p class="card-text">You can change peoples mindsets by giving them a pitch on best coding practices.</p>
+              <p class="card-text">Change peoples mindsets by giving them a pitch on best coding practices.</p>
               <button type="button" class="btn btn-outline-primary"><a href="../pitch/">Add Pitch</a></button>
               <button type="button" class="btn btn-outline-primary"><a href="/categories/coding">Read Pitches</a></button>
             </div>
@@ -36,7 +36,7 @@
                 <div class="card-header">Life</div>
                 <div class="card-body text-info">
                   <h5 class="card-title">Pitches about life</h5>
-                  <p class="card-text">You can change peoples mindsets by giving them a pitch on best life practices.</p>
+                  <p class="card-text">Give them a pitch on best life practices and see them change their mindset.<i class="baseline-wb_incandescent"></i>.</p>
                   <button type="button" class="btn btn-outline-primary"><a href="../pitch/">Add Pitch</a></button>
                   <button type="button" class="btn btn-outline-primary"><a href="/categories/life">Read Pitches</a></button>
                 </div>

@@ -59,7 +59,7 @@ After the operation you will now be able to run the application locally on your 
 
 ### Link to view the app (heroku)
 
-[pitches](https://pitchkatana.herokuapp.com/)
+[pitches](https://min1-pitch.herokuapp.com/)
 
 ------------------------------------------------------------------------
 

@@ -3,7 +3,6 @@ arrow==1.2.2
 attrs==21.4.0
 aws-lambda-builders==1.10.0
 aws-sam-translator==1.42.0
-backports.zoneinfo==0.2.1
 binaryornot==0.4.4
 blinker==1.4
 certifi==2021.10.8

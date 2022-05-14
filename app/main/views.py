@@ -37,15 +37,15 @@ def new_pitch():
 
     return render_template('pitch.html',pitch_entry= form)
 
-@main.route('/categories/<cate>')
-def category(cate):
-    '''
-    function to return the pitches by category
-    '''
-    category = Pitches.get_pitches(cate)
-    # print(category)
-    title = f'{cate}'
-    return render_template('categories.html',title = title, category = category)
+# @main.route('/categories/<cat>')
+# def category(cat):
+#     '''
+#     function to return the pitches by category
+#     '''
+#     category = Pitches.get_pitches(cat)
+#     # print(category)
+#     title = f'{cat}'
+#     return render_template('categories.html',title = title, category = category)
 
 @main.route('/user/<uname>')
 def profile(uname):

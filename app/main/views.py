@@ -3,7 +3,7 @@ from flask_login import login_required, current_user
 from . forms import PitchForm, CommentForm, CategoryForm
 from .import main
 from .. import db
-from ..models import User, Pitch, Comments, PitchCategory, Votes
+from ..models import User, Pitch, Comment, Votes
 
 #display categories on the landing page
 @main.route('/')
@@ -12,12 +12,11 @@ def index():
     Function that returns index page
     """
 
-    all_category = PitchCategory.get_category()
     all_pitches = Pitch.query.order_by('id').all()
     print(all_pitches)
 
     title = 'min1-Pitches'
-    return render_template('index.html', title = title, category=all_category, all_pitches=all_pitches)
+    return render_template('index.html', title = title, all_pitches=all_pitches)
 
 #Route for adding a new pitch
 @main.route('/pitch/newpitch',methods= ['POST','GET'])
@@ -27,11 +26,11 @@ def new_pitch():
     if pitch.validate_on_submit():
         title = pitch.pitch_title.data
         category = pitch.pitch_category.data
-        yourPitch = pitch.pitch_comment.data
+        user_id = current_user
 
         #update pitch instance
 
-        newPitch = Pitch(pitch_title = title,pitch_category = category,pitch_comment = yourPitch,user= current_user)
+        newPitch = Pitch(pitch_title = title,pitch_category = category,user= user_id)
 
         #save pitch
         newPitch.save_pitch()
@@ -39,38 +38,38 @@ def new_pitch():
 
     title = 'NEW PITCH'
 
-    return render_template('new_pitch.html',title = title, pitchform = pitch)  
+    return render_template('pitch.html',title = title, pitchform = pitch)  
 
 
 
-@main.route('/categories/<int:id>')
-def category(id):
-    category = PitchCategory.query.get(id)
-    if category is None:
-        abort(404)
+# @main.route('/categories/<int:id>')
+# def category(id):
+#     category = PitchCategory.query.get(id)
+#     if category is None:
+#         abort(404)
         
-    pitches=Pitch.get_pitches(id)
-    return render_template('category.html', pitches=pitches, category=category)
+#     pitches=Pitch.get_pitches(id)
+#     return render_template('category.html', pitches=pitches, category=category)
 
 
-@main.route('/add/category', methods=['GET','POST'])
-@login_required
-def new_category():
-    """
-    View new group route function that returns a page with a form to create a category
-    """
+# @main.route('/add/category', methods=['GET','POST'])
+# @login_required
+# def new_category():
+#     """
+#     View new group route function that returns a page with a form to create a category
+#     """
     
-    form = CategoryForm()
+#     form = CategoryForm()
 
-    if form.validate_on_submit():
-        name = form.name.data
-        new_category = PitchCategory(name = name)
-        new_category.save_category()
+#     if form.validate_on_submit():
+#         name = form.name.data
+#         new_category = PitchCategory(name = name)
+#         new_category.save_category()
 
-        return redirect(url_for('.index'))
+#         return redirect(url_for('.index'))
 
-    title = 'New category'
-    return render_template('new_category.html', category_form = form, title = title)
+#     title = 'New category'
+#     return render_template('new_category.html', category_form = form, title = title)
 
 @main.route('/category/life',methods= ['GET'])
 def displayLifeCategory():
@@ -98,7 +97,7 @@ def displayPickupCategory():
 @login_required
 def viewPitch(id):
     onepitch = Pitch.getPitchId(id)
-    comments = Comments.get_comments(id)
+    comments = Comment.get_comments(id)
 
     if request.args.get("like"):
         onepitch.likes = onepitch.likes + 1
@@ -106,7 +105,7 @@ def viewPitch(id):
         db.session.add(onepitch)
         db.session.commit()
 
-        return redirect("/comment/{pitch_id}".format(pitch_id=category.id))
+        return redirect("/comment/{pitch_id}".format(pitch_id= id))
 
     elif request.args.get("dislike"):
         onepitch.dislikes = onepitch.dislikes + 1
@@ -114,13 +113,13 @@ def viewPitch(id):
         db.session.add(onepitch)
         db.session.commit()
 
-        return redirect("/comment/{pitch_id}".format(pitch_id=category.id))
+        return redirect("/comment/{pitch_id}".format(pitch_id= id))
 
     commentForm = CommentForm()
     if commentForm.validate_on_submit():
         opinion = commentForm.opinion.data
 
-        newComment = Comments(opinion = opinion,user = current_user,pitches_id= id)
+        newComment = Comment(opinion = opinion,user = current_user,pitches_id= id)
 
         newComment.save_comment()
 
@@ -143,7 +142,7 @@ def post_comment(id):
 
     if form.validate_on_submit():
         opinion = form.opinion.data
-        new_comment = Comments(opinion = opinion, user_id = current_user.id, pitches_id = pitches.id)
+        new_comment = Comment(opinion = opinion, user_id = current_user.id, pitches_id = pitches.id)
         new_comment.save_comment()
         return redirect(url_for('.view_pitch', id = pitches.id))
 

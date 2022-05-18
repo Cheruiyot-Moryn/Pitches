@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as macro %}
+
+{%block content%}
+<div class="jumbotron jumbotron-fluid">
+    <div class="container text-center">
+      <h2 class="card-title h1-responsive font-bold">Product Pitches</h2>
+    </div>
+  </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-4">
+        {{macro.displayPitches(codePitches)}}
+        </div>
+    </div>
+</div>
+{%endblock%}

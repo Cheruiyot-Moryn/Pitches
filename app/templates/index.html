@@ -1,57 +1,91 @@
-{% extends 'base.html'%}
-{% block styles%} {{ super() }}
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{{url_for('static', filename='css/index.css')}}" > {% endblock %}
-
-
-<!-- <body> -->
+{% extends 'base.html'%} 
+{% import 'macros.html' as macro %} 
+{% block content%}
+<div id="background">
   <style>
-     .container{
-       align-items: center;
-       background-color: aliceblue;
-     }
-  </style> 
-  {% block content %}
-    <br>
-    <div class="card border-info mb-3" style="max-width: 35rem;">
-            <div class="card-header">Coding</div>
-            <div class="card-body text-info">
-              <h5 class="card-title">Pitches on coding</h5>
-              <p class="card-text">Change peoples mindsets by giving them a pitch on best coding practices.</p>
-              <button type="button" class="btn btn-outline-primary"><a href="../pitch/">Add Pitch</a></button>
-              <button type="button" class="btn btn-outline-primary"><a href="/categories/coding">Read Pitches</a></button>
-            </div>
-          </div>  
-          
-          <div class="card border-info mb-3" style="max-width: 35rem;">
-            <div class="card-header">Puns</div>
-            <div class="card-body text-info">
-              <h5 class="card-title">Puns</h5>
-              <p class="card-text">You can never go wrong with puns</p>
-              <button type="button" class="btn btn-outline-primary"><a href="../pitch/">Add Pitch</a></button>
-              <button type="button" class="btn btn-outline-primary"><a href="/categories/Puns">Read Pitches</a></button>
-            </div>
-          </div>
-    
+    #background{
+      background-image: url('../static/photo/https://unsplash.com/photos/N5sC8zZUgy4');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+  </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com"    crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Macondo&display=swap" rel="stylesheet">
+    <div class="container text-white text-center">
+      <h2 class="card-title h1-responsive font-bold" style="font-size:80px; color:white; font-family: 'Dancing Script', cursive; font-weight:bold;">min1-PITCH</h2>
+      <p class="lead" style="color: white; font-size:30px;">Welcome to min1-PITCH where you can be informative in just one minute and change peoples mindset</p>
+      <a class="btn btn-primary btn-lg" href="{{url_for('main.new_pitch')}}"><i class="fas fa-clone left"></i>Create Pitch</a>
+    </div>
+  <!-- </div> -->
+
+<h3 class="text-center text-uppercase text-bold" style="font-family: 'Dancing Script', cursive; font-size:60px; color: white;">CATEGORIES</h3>
+<hr>
+
+  <div class="row m-3">
+    <div class="col-md-6">
+      <div class=" card col-sm pt-2">
+        <div class="well well-lg p-3" style="text-align: center;">
+            <h3 class="" style="font-family: 'Macondo', cursive; font-size:35px; font-weight:bold;">LIFE PITCHES</h3>
+            <hr>
+            <p>Change how people view life with a pitch. </p>
+                <a href="{{url_for('main.displayInterviewCategory')}}" class="btn btn-primary btn-lg -center">
+                View Pitch</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class=" card col-sm mt-2">
+        <div class="well well-lg p-3" style="text-align: center;">
+            <h3 style="font-family: 'Macondo', cursive; font-size:35px; font-weight:bold;">PROMOTION PITCHES</h3>
+            <hr>
+            <p>This is how best you can structure your promotion pitches.</p>
+                <a href="{{url_for('main.displayPromotionCategory')}}" class="btn btn-primary btn-lg -center">
+                View Pitch</a>
+        </div>
+    </div>
+    </div>
+  </div>
+
+  <div class="row m-3">
+    <div class="col-md-6">
+      <div class=" card col-sm mt-2">
+        <div class="well well-lg p-3" style="text-align: center;">
+            <h3 style="font-family: 'Macondo', cursive; font-size:35px; font-weight:bold;">CODE PITCHES</h3>
+            <hr>
+            <p>A summary of what should be included in a code pitch </p>
+                <a href="{{url_for('main.displayProductCategory')}}" class="btn btn-primary btn-lg -center">
+                View Pitch</a>
         </div>
       </div>
 
-          <div class="d-flex justify-content-center">
-            <div class="card-groups">
-              <div class="card border-info mb-3" style="max-width: 35rem;">
-                <div class="card-header">Life</div>
-                <div class="card-body text-info">
-                  <h5 class="card-title">Pitches about life</h5>
-                  <p class="card-text">Give them a pitch on best life practices and see them change their mindset.<i class="baseline-wb_incandescent"></i>.</p>
-                  <button type="button" class="btn btn-outline-primary"><a href="../pitch/">Add Pitch</a></button>
-                  <button type="button" class="btn btn-outline-primary"><a href="/categories/life">Read Pitches</a></button>
-                </div>
-              </div>      
-            </div>
+    </div>
+    <div class="col-md-6">
+      <div class=" card col-sm mt-2">
+        <div class="well well-lg p-3" style="text-align: center;">
+            <h3 style="font-family: 'Macondo', cursive; font-size:35px; font-weight:bold;">PICKUP-LINE PITCHES</h3>
+            <hr>
+            <p>Pickup lines to be included in your pitch</p>
+                <a href="{{url_for('main.displayPickupCategory')}}" class="btn btn-primary btn-lg -center">
+                View Pitch</a>
         </div>
-      
-  {% endblock %}
-  
+      </div>
+    </div>
+  </div>
+</div>
 
-      <!-- </body>       -->
+  <!-- Footer -->
+<footer class="page-footer font-large gray darken-3">
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2022 Copyright:
+    <a href="https://mdbootstrap.com/">min1-Pitch</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+
+</div>
+{% endblock %}

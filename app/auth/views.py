@@ -17,7 +17,7 @@ def login():
 
         flash('Invalid author or Password')
 
-    title = "Pitches login"
+    title = "min1-Pitches"
     return render_template('auth/login.html',login_form = login_form,title=title)
 
 @auth.route('/register',methods = ["GET","POST"])
